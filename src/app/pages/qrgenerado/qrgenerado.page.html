@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="duoc" mode="ios">
+
+
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="start" name="logo-ionic" color="amarilloduoc"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo">GenerarQR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="assets/qr-code.png " class="ion-padding">
+  </ion-card>
+  <ion-button color="warning" (click)="SaludoOk()" expand="full" fill="solid" shape="round">
+    Borrar QR
+  </ion-button>
+
+
+</ion-content>

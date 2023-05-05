@@ -1,0 +1,45 @@
+.ion-color-duoc {
+	--ion-color-base: var(--ion-color-duoc);
+	--ion-color-base-rgb: var(--ion-color-duoc-rgb);
+	--ion-color-contrast: var(--ion-color-duoc-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-duoc-contrast-rgb);
+	--ion-color-shade: var(--ion-color-duoc-shade);
+	--ion-color-tint: var(--ion-color-duoc-tint);
+}
+
+.ion-color-amarilloduoc {
+	--ion-color-base: var(--ion-color-amarilloduoc);
+	--ion-color-base-rgb: var(--ion-color-amarilloduoc-rgb);
+	--ion-color-contrast: var(--ion-color-amarilloduoc-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-amarilloduoc-contrast-rgb);
+	--ion-color-shade: var(--ion-color-amarilloduoc-shade);
+	--ion-color-tint: var(--ion-color-amarilloduoc-tint);
+}
+
+.titulo{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, serif;
+    letter-spacing: 1.5px;
+    
+
+}
+
+.a{
+	font-size: 13px;
+}
+
+.tituloCard{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, serif;
+    letter-spacing: 1px;
+    font-size: 18px;
+	text-align:center;
+}
+
+.fondo{
+    --background: url(/assets/background_duoc.jpg) 0 0/130% 100%;
+	
+}
+
+.marginTopInicioSesion{
+	margin-top: 70%;
+}
+

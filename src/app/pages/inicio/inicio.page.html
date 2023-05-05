@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="duoc" mode="ios" >
+
+
+
+    <ion-buttons slot="start" >
+      <ion-button (click)="mostrarMenu()" [class.button-disabled]="true" >
+        <ion-icon slot="start" name="logo-ionic" color="amarilloduoc" >
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/informacion">
+        <ion-icon slot="end" name="information-circle" color="amarilloduoc"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="titulo a"></ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="fondo">
+
+  <ion-card>
+
+    <ion-card-content>
+      <img src="assets/DuocLogo.jpg">
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="marginTopInicioSesion" color="duoc">
+    <ion-card-title class="ion-padding tituloCard">¡Inicia sesión o Registrate!</ion-card-title>
+    <form [formGroup]="formularioLogin">
+      <ion-item>
+        <ion-label >Email: </ion-label>
+        <ion-input type="email"  formControlName="correo" color="duoc">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Contraseña: </ion-label>
+        <ion-input type="password"  formControlName="password" color="duoc">
+        </ion-input>
+      </ion-item>
+
+      <ion-button color="amarilloduoc" expand="full" fill="solid" (click)="Ingresar()">
+        Iniciar Sesión
+      </ion-button>
+      <ion-button color="amarilloduoc" type="submit" expand="full" fill="outline" [routerLink]="['/registrodocente']">
+        Registrarse
+      </ion-button>
+
+    </form>
+  </ion-card>
+  <!--Primeros botones :,)
+  <ion-button routerLink="/alert">
+    Alert
+  </ion-button>
+
+  <ion-button routerLink="/action-sheet">
+    Action Sheet
+  </ion-button>-->
+</ion-content>

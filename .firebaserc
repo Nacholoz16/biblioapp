@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "biblioapp-ab77c"
+  },
+  "targets": {
+    "biblioapp-ab77c": {
+      "hosting": {
+        "app": [
+          "biblioapp-ab77c"
+        ]
+      }
+    }
+  }
+}

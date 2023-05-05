@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="duoc" mode="ios" >
+
+
+
+    <ion-buttons slot="start" >
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="start" name="logo-ionic" color="amarilloduoc" >
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="titulo">Feriados</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="fondo">
+
+  <ion-card >
+    <ion-card-content>
+
+
+      <p class="tituloCard">A todos nos gustan los feriados!!</p><br>
+      
+          <p class="parrafo1">
+            Acá te mostramos todos los feriados de este año 2022:
+          </p><br>
+
+          <p class="parrafo1">
+           Nota: el formato está en año-mes-día
+          </p><br>
+
+      </ion-card-content>   
+    </ion-card>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+          *ngFor="let feriado of feriados; let i=index">
+
+          <ion-card>
+            <ion-card-header>
+                <ion-card-title>{{feriado.title}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>
+                {{feriado.date}}
+              </p>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+    
+
+
+  
+
+  
+</ion-content>
+
+
