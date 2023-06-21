@@ -48,7 +48,8 @@ const routes: Routes = [
     path: 'api',
     loadChildren: () => import('./pages/api/api.module').then( m => m.ApiPageModule),
     canActivate: [IngresadoGuard]    
-  },  {
+  },
+  {
     path: 'prueba-firebase',
     loadChildren: () => import('./pages/prueba-firebase/prueba-firebase.module').then( m => m.PruebaFirebasePageModule)
   },

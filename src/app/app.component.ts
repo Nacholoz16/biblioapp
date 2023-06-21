@@ -38,8 +38,8 @@ export class AppComponent{
       redirecTo:'/informacion'
     },
     {
-      icon:'nuclear',
-      name: 'prueba-firebase',
+      icon:'bug-outline',
+      name: 'Mesa ayuda FAQ',
       redirecTo:'/prueba-firebase'
     },
     
