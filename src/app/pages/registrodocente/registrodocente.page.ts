@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, ToastController } from '@ionic/angular';
-import { RegistroService, Usuario } from '../../services/registro.service';
+
 import { FormGroup, FormControl, FormBuilder, Validator, Validators } from '@angular/forms';
-import { Datos } from 'src/app/interfaces/interfaces';
+import { Usuario } from 'src/app/interfaces/usuario';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-registrodocente',
@@ -12,22 +13,39 @@ import { Datos } from 'src/app/interfaces/interfaces';
 
 export class RegistrodocentePage implements OnInit {
   formularioRegistro: FormGroup;
-  newUsuario: Usuario = <Usuario>{};
-  usuarios: Usuario[] = [];
+
+  newUsuario: Usuario = {
+    nombre: "matias",
+    apellidos: "Salazar Soto",
+    correo: "ma.salazar@duocuc.cl",
+    pass: "1234",
+    repass: "1234"
+  }
+
+  usuario: Usuario[] = [];
 
 
-  constructor(private navController: NavController, private registroService: RegistroService, private alertController: AlertController, private toastController: ToastController, private fb: FormBuilder) {
+
+  constructor(private navController: NavController, private apiService: ApiService, private alertController: AlertController, private toastController: ToastController, private fb: FormBuilder) {
     this.formularioRegistro = this.fb.group({
       'nombre': new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(/^[a-zA-z ]+$/)]),
       'apellidos': new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(/^[a-zA-z ]+$/)]),
       'correo': new FormControl("", [Validators.required, Validators.pattern(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/)]),
-      'password': new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
-      'confirmPass': new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15)])
+      'pass': new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+      'repass': new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15)])
     })
   }
 
   ngOnInit() {
   }
+
+  RegistrarUsuario() {
+    this.apiService.postUsuario(this.newUsuario).subscribe()
+  }
+
+
+
+
   async CrearUsuario() {
 
     var form = this.formularioRegistro.value;
@@ -38,54 +56,59 @@ export class RegistrodocentePage implements OnInit {
       console.log('error')
     }
     else {
-      if (form.confirmPass != form.password) {
+      if (form.repass != form.pass) {
         this.alertErrorPass();
         console.log('errorPass')
       } else {
-        this.newUsuario.nombre = form.nombre;
-        this.newUsuario.apellidos = form.apellidos;
-        this.newUsuario.correo = form.correo;
-        this.newUsuario.password = form.password;
-        this.newUsuario.confirmPass = form.confirmPass;
+        const dominiosPermitidos = ['@duocuc.cl', '@profesor.duoc.cl', '@alumno.duoc.cl'];
+        const dominioEncontrado = dominiosPermitidos.find(dominio => form.correo.endsWith(dominio));
+        if (dominioEncontrado) {
+          this.newUsuario.nombre = form.nombre;
+          this.newUsuario.apellidos = form.apellidos;
+          this.newUsuario.correo = form.correo;
+          this.newUsuario.pass = form.pass;
+          this.newUsuario.repass = form.repass;
 
-        this.registroService.getUser().then(datos => {
-        this.usuarios = datos;
+          this.apiService.listarUsuarios().subscribe(datos => {
+            this.usuario = datos;
 
-          if (!datos || datos.length == 0) {
-            this.registroService.addDatos(this.newUsuario).then(dato => {
-              this.newUsuario = <Usuario>{};
+            if (!datos || datos.length == 0) {
+              this.apiService.postUsuario(this.newUsuario).subscribe();
               this.showToast('Usuario Creado satisfactoriamente');
-            });
-            this.formularioRegistro.reset();
-            this.navController.navigateRoot('login');
-          } else {
-
-            for (let obj of this.usuarios) {
-              if (this.newUsuario.correo == obj.correo) {
-                existe = 1;
-                console.log('duplicado')
-                break
-              }
-            }
-
-
-            if (existe == 1) {
-              this.alertCorreoDuplex();
-              console.log('error correo duplicado')
-
+              this.formularioRegistro.reset();
+              /* this.navController.navigateRoot('login');*/
             } else {
-              this.registroService.addDatos(this.newUsuario).then(dato => {
-                this.newUsuario = <Usuario>{};
+
+              for (let obj of this.usuario) {
+                if (this.newUsuario.correo == obj.correo) {
+                  existe = 1;
+                  console.log('duplicado')
+                  break
+                }
+              }
+
+
+              if (existe == 1) {
+                this.alertCorreoDuplex();
+                console.log('error correo duplicado')
+
+              } else {
+                this.apiService.postUsuario(this.newUsuario).subscribe();
                 this.showToast('Usuario Creado!');
-                console.log('user created');
-              });
+                console.log(this.newUsuario.correo);
+              }
+              this.formularioRegistro.reset();
+              /* this.navController.navigateRoot('login');*/
+
             }
-            this.formularioRegistro.reset();
-            this.navController.navigateRoot('login');
 
-          }
-
-      })
+          })
+        }else{
+          console.log('el correo no es valido')
+          this.alertCorreo();
+          return false 
+          
+        }
       }
     }
   }
@@ -115,6 +138,14 @@ export class RegistrodocentePage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Constraseñas invalidas',
       message: 'Las contraseñas deben coincidir',
+      buttons: ['Aceptar']
+    })
+    await alert.present();
+  }
+  async alertCorreo() {
+    const alert = await this.alertController.create({
+      header: 'El correo debe ser institucional',
+      message: 'El correo debe coincidir con los registros',
       buttons: ['Aceptar']
     })
     await alert.present();

@@ -42,11 +42,11 @@
 
       <ion-item>
         <ion-label >Contraseña: </ion-label>
-        <ion-input type="password"  formControlName="password" color="duoc">
+        <ion-input type="password"  formControlName="pass" color="duoc" (keyup.enter)="Ingresar()">
         </ion-input>
       </ion-item>
 
-      <ion-button color="amarilloduoc" expand="full" fill="solid" (click)="Ingresar()">
+      <ion-button color="amarilloduoc" expand="full" fill="solid" (click)="Ingresar()" >
         Iniciar Sesión
       </ion-button>
       <ion-button color="amarilloduoc" type="submit" expand="full" fill="outline" [routerLink]="['/registrodocente']">

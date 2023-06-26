@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 interface Componente{
   icon: string;
   name: string;
@@ -12,11 +13,8 @@ interface Componente{
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent{
- 
- 
 
-
-  componentes : Componente[] = [ 
+  componentes : Componente[] = [
     {
       icon:'home-outline',
       name: 'Inicio',
@@ -26,21 +24,21 @@ export class AppComponent{
       icon: 'qr-code-sharp',
       name: 'Generar QR',
       redirecTo:'/alert'
-    }, 
+    },
     {
       icon:'calendar-outline',
       name: 'Feriados',
       redirecTo:'/api'
     },
     {
+      icon:'bug-outline',
+      name: 'Mesa ayuda FAQ',
+      redirecTo:'/prueba-firebase'
+     },
+    {
       icon:'information-circle-outline',
       name: 'Acerca de',
       redirecTo:'/informacion'
-    },
-    {
-      icon:'nuclear',
-      name: 'prueba-firebase',
-      redirecTo:'/prueba-firebase'
     },
     
     {
@@ -48,6 +46,11 @@ export class AppComponent{
       name: 'Cerrar Sesión',
       redirecTo:'/logout'
     }
-    
+ 
+
   ];
+
 }
+
+
+

@@ -17,7 +17,7 @@ const USERS_KEY = 'my-usuarios';
 
 
 export class RegistroService {
-
+  private usuarioStorageKey = 'USERS_KEY';
   private _storage: Storage
   newUsuario: Usuario = <Usuario>{};
 
@@ -42,5 +42,17 @@ export class RegistroService {
   }//fin addDatos()
   async getUser(): Promise<Usuario[]>{
     return this.storage.get(USERS_KEY);
+  }
+
+  guardarUsuario(usuario: any) {
+    this.storage.set(this.usuarioStorageKey, usuario);
+  }
+
+  obtenerUsuario() {
+    return this.storage.get(this.usuarioStorageKey);
+  }
+
+  eliminarUsuario() {
+    this.storage.remove(this.usuarioStorageKey);
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController,MenuController,NavController,ToastController } from '@ionic/angular';
 import { QRCodeModule } from 'angularx-qrcode/public-api';
-
+import { ApiService } from 'src/app/services/api.service';
+import { Usuario } from 'src/app/interfaces/usuario';
 
 @Component({
   selector: 'app-alert',
@@ -12,26 +13,72 @@ export class AlertPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
   qrCodeString='';
-
+  usuario = [];
+  
   constructor(private alertController: AlertController,
     private menuController: MenuController,
     private navCtrl: NavController,
-    private toastController: ToastController) { }
+    private toastController: ToastController, private apiService:ApiService) { }
 
   ngOnInit() {
+    this.apiService.listarSalas().subscribe((salas) => {
+      this.salas = salas;
+    }); 
   }
   mostrarMenu() {
     this.menuController.open('first');
   }
-
+  salas = []
   registro={
     dia:'',
     mes:'',
-    ano:'2022',
+    ano:'2023',
     hora:'',
     min:'',
     seccion:'',
-    ramo:''}
+    ramo:''
+  }
+
+  selectedId: number;
+  selectedHorario: string;
+  selectedHora: string;
+  reservada:boolean;
+
+
+
+  onIdChange() {
+    this.apiService.listarSalas().subscribe((salas) => {
+      this.salas = salas;
+    });  
+    this.selectedHorario = null;
+    this.selectedHora = null;
+  }
+  
+
+  onHorarioChange() {
+    this.selectedHora = null;
+  }
+
+  onHoraSelect() {
+    this.selectedHora = null;
+  }
+
+  getHorariosForId(id: number): string[] {
+    const sala = this.salas.find(sala => sala.id === id);
+    if (sala) {
+      return Object.keys(sala.horarios);
+    }
+    return [];
+  }
+
+  getHorasForHorario(horario: string): any[] {
+    const sala = this.salas.find(sala => sala.id === this.selectedId);
+    if (sala && sala.horarios.hasOwnProperty(horario)) {
+      return sala.horarios[horario];
+    }
+    return [];
+  }
+
 
   async crearQr() {    //alerta generar codigo
 
@@ -39,7 +86,8 @@ export class AlertPage implements OnInit {
     const alert = await this.alertController.create({
 
       header: 'Codigo Generado',
-      message: 'Se registró: ' + this.registro.dia + '/' + this.registro.mes + '/' + this.registro.ano + ' Hora: ' + this.registro.hora + ':' + this.registro.min + " sección: " + this.registro.seccion + " ramo: " + this.registro.ramo,
+      message: 'Se registró la ' + 'Sala: ' + this.selectedId + ' para el día ' + this.selectedHorario + ' a las: ' + this.selectedHora,
+      //message: 'Se registró: ' + this.registro.dia + '/' + this.registro.mes + '/' + this.registro.ano + ' Hora: ' + this.registro.hora + ':' + this.registro.min + " sección: " + this.registro.seccion + " ramo: " + this.registro.ramo,
       buttons: [
         {
           text: 'No',
@@ -49,7 +97,10 @@ export class AlertPage implements OnInit {
           text: 'Listo',
           role: 'confirm',
           handler: data => {
-          this.qrCodeString=this.registro.dia + '/' + this.registro.mes + '/' + this.registro.ano + ' Hora: ' + this.registro.hora + ':' + this.registro.min + " sección: " + this.registro.seccion + " ramo: " + this.registro.ramo;
+            //this.qrCodeString=this.registro.dia + '/' + this.registro.mes + '/' + this.registro.ano + ' Hora: ' + this.registro.hora + ':' + this.registro.min + " sección: " + this.registro.seccion + " ramo: " + this.registro.ramo;
+            this.reservada = true;
+            this.qrCodeString=this.selectedId + '/' + this.selectedHora + '/' + this.selectedHorario ;
+            this.apiService.actualizarReserva(this.selectedId,this.selectedHora,this.selectedHorario,this.reservada).subscribe();
           },
         },
 

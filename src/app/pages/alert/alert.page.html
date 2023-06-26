@@ -15,70 +15,69 @@
   <ion-card class="marginTopregistro">
     <ion-card-content>
       <p class="parrafo1">
-        !Para poder registrar la asistencia, solo basta con llenar los datos y darle al botón Generar QR!
+        !Para poder registrar la reserva, solo basta con llenar los datos y darle al botón Generar QR!
       </p>
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <qrcode class="qr" [qrdata]="qrCodeString" [width]="256" [errorCorrectionLevel]="'M'" class="qr"></qrcode>
+    <qrcode [qrdata]="qrCodeString" [width]="256" [errorCorrectionLevel]="'M'" class="qr"></qrcode>
   </ion-card>
 
- <form novalidate #formulario="ngForm" >
+  <!-- <form novalidate #formulario="ngForm" >
  
   <ion-item>
     <ion-label>Dia</ion-label>
     <ion-select placeholder="Día" [(ngModel)]="registro.dia" mode="ios" name="dia"required>
         <ion-select-option value="" selected></ion-select-option>
-      <ion-select-option value="01">01</ion-select-option>
-      <ion-select-option value="02">02</ion-select-option>
-      <ion-select-option value="03">03</ion-select-option>
-      <ion-select-option value="04">04</ion-select-option>
-      <ion-select-option value="05">05</ion-select-option>
-      <ion-select-option value="06">06</ion-select-option>
-      <ion-select-option value="07">07</ion-select-option>
-      <ion-select-option value="08">08</ion-select-option>
-      <ion-select-option value="09">09</ion-select-option>
-      <ion-select-option value="10">10</ion-select-option>
-      <ion-select-option value="11">11</ion-select-option>
-      <ion-select-option value="12">12</ion-select-option>
-      <ion-select-option value="13">13</ion-select-option>
-      <ion-select-option value="14">14</ion-select-option>
-      <ion-select-option value="15">15</ion-select-option>
-      <ion-select-option value="16">16</ion-select-option>
-      <ion-select-option value="17">17</ion-select-option>
-      <ion-select-option value="18">18</ion-select-option>
-      <ion-select-option value="19">19</ion-select-option>
-      <ion-select-option value="20">20</ion-select-option>
-      <ion-select-option value="21">21</ion-select-option>
-      <ion-select-option value="22">22</ion-select-option>
-      <ion-select-option value="23">23</ion-select-option>
-      <ion-select-option value="24">24</ion-select-option>
-      <ion-select-option value="25">25</ion-select-option>
-      <ion-select-option value="26">26</ion-select-option>
-      <ion-select-option value="27">27</ion-select-option>
-      <ion-select-option value="28">28</ion-select-option>
-      <ion-select-option value="29">29</ion-select-option>
-      <ion-select-option value="30">30</ion-select-option>
-      <ion-select-option value="31">31</ion-select-option>
+      <ion-select-option value="01">Jueves 01</ion-select-option>
+      <ion-select-option value="02">Viernes 02</ion-select-option>
+      <ion-select-option value="03">Sabado 03</ion-select-option>
+      <ion-select-option value="04" disabled>Domingo 04</ion-select-option>
+      <ion-select-option value="05">Lunes 05</ion-select-option>
+      <ion-select-option value="06">Martes 06</ion-select-option>
+      <ion-select-option value="07">Miercoles 07</ion-select-option>
+      <ion-select-option value="08">Jueves 08</ion-select-option>
+      <ion-select-option value="09">Viernes 09</ion-select-option>
+      <ion-select-option value="10">Sabado 10</ion-select-option>
+      <ion-select-option value="11" disabled>Domingo 11</ion-select-option>
+      <ion-select-option value="12">Lunes 12</ion-select-option>
+      <ion-select-option value="13">Martes 13</ion-select-option>
+      <ion-select-option value="14">Miercoles 14</ion-select-option>
+      <ion-select-option value="15">Jueves 15</ion-select-option>
+      <ion-select-option value="16">Viernes 16</ion-select-option>
+      <ion-select-option value="17">Sabado 17</ion-select-option>
+      <ion-select-option value="18" disabled>Domingo 18</ion-select-option>
+      <ion-select-option value="19">Lunes 19</ion-select-option>
+      <ion-select-option value="20">Martes 20</ion-select-option>
+      <ion-select-option value="21">Miercoles 21</ion-select-option>
+      <ion-select-option value="22">Jueves 22</ion-select-option>
+      <ion-select-option value="23">Viernes 23</ion-select-option>
+      <ion-select-option value="24">Sabado 24</ion-select-option>
+      <ion-select-option value="25" disabled>Domingo 25</ion-select-option>
+      <ion-select-option value="26" disabled>Lunes 26</ion-select-option>
+      <ion-select-option value="27">Martes 27</ion-select-option>
+      <ion-select-option value="29">Miercoles 29</ion-select-option>
+      <ion-select-option value="30">Jueves 30</ion-select-option>
+       <ion-select-option value="31">31</ion-select-option> 
     </ion-select>
 
     <ion-select placeholder="Mes" [(ngModel)]="registro.mes" mode="ios" events="ionBlur" name="mes" required>
         <ion-select-option value="" selected></ion-select-option>
-      <ion-select-option value="Enero">Enero</ion-select-option>
-      <ion-select-option value="Febrero">Febrero</ion-select-option>
-      <ion-select-option value="Marzo">Marzo</ion-select-option>
-      <ion-select-option value="Abril">Abril</ion-select-option>
-      <ion-select-option value="Mayo">Mayo</ion-select-option>
-      <ion-select-option value="Junio">Junio</ion-select-option>
-      <ion-select-option value="Julio">Julio</ion-select-option>
-      <ion-select-option value="Agosto">Agosto</ion-select-option>
-      <ion-select-option value="Septiembre">Septiembre</ion-select-option>
-      <ion-select-option value="Octubre">Octubre</ion-select-option>
-      <ion-select-option value="Noviembre">Noviembre</ion-select-option>
-      <ion-select-option value="Diciembre">Diciembre</ion-select-option>
+      <ion-select-option value="Enero" disabled>Enero</ion-select-option>
+      <ion-select-option value="Febrero" disabled>Febrero</ion-select-option>
+      <ion-select-option value="Marzo" disabled>Marzo</ion-select-option>
+      <ion-select-option value="Abril" disabled>Abril</ion-select-option>
+      <ion-select-option value="Mayo" disabled>Mayo</ion-select-option>
+      <ion-select-option value="Junio" >Junio</ion-select-option>
+      <ion-select-option value="Julio" disabled>Julio</ion-select-option>
+      <ion-select-option value="Agosto" disabled>Agosto</ion-select-option>
+      <ion-select-option value="Septiembre" disabled>Septiembre</ion-select-option>
+      <ion-select-option value="Octubre" disabled>Octubre</ion-select-option>
+      <ion-select-option value="Noviembre" disabled>Noviembre</ion-select-option>
+      <ion-select-option value="Diciembre" disabled>Diciembre</ion-select-option>
     </ion-select>
 
-    <ion-select placeholder="2022" [(ngModel)]="registro.ano" disabled mode="ios" name="ano" required >
+    <ion-select placeholder="2023" [(ngModel)]="registro.ano" disabled mode="ios" name="ano" required >
     </ion-select>
   </ion-item>
 
@@ -86,7 +85,7 @@
     <ion-label>Hora</ion-label>
     <ion-select placeholder="Hora" [(ngModel)]="registro.hora" mode="ios" name="hora" required>
         <ion-select-option value="" selected></ion-select-option>
-      <ion-select-option value="07">07</ion-select-option>
+      <ion-select-option value="07">07</ion-select-option> 
       <ion-select-option value="08">08</ion-select-option>
       <ion-select-option value="09">09</ion-select-option>
       <ion-select-option value="10">10</ion-select-option>
@@ -101,15 +100,15 @@
       <ion-select-option value="19">19</ion-select-option>
       <ion-select-option value="20">20</ion-select-option>
       <ion-select-option value="21">21</ion-select-option>
-      <ion-select-option value="22">22</ion-select-option>
+       <ion-select-option value="22">22</ion-select-option>
       <ion-select-option value="23">23</ion-select-option>
-      <ion-select-option value="24">24</ion-select-option>
+      <ion-select-option value="24">24</ion-select-option> 
     </ion-select>
 
     <ion-select placeholder="Minutos" [(ngModel)]="registro.min" mode="ios" name="min" required >
         <ion-select-option value="" selected></ion-select-option>
       <ion-select-option value="00">00</ion-select-option>
-      <ion-select-option value="10">10</ion-select-option>
+       <ion-select-option value="10">10</ion-select-option>
       <ion-select-option value="15">15</ion-select-option>
       <ion-select-option value="20">20</ion-select-option>
       <ion-select-option value="25">25</ion-select-option>
@@ -122,16 +121,16 @@
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label>ID Curso</ion-label>
-    <ion-select placeholder="Curso" [(ngModel)]="registro.ramo" mode="ios" name="ramo" required>
-        <ion-select-option value="" selected></ion-select-option>
-      <ion-select-option value="PGY4121">PGY4121</ion-select-option>
-      <ion-select-option value="CSY4111">CSY4111</ion-select-option>
-      <ion-select-option value="ASY4131">ASY4131</ion-select-option>
-      <ion-select-option value="MAT4140">MAT4140</ion-select-option>
+    <ion-label>ID Sala</ion-label>
+    <ion-select placeholder="Sala" [(ngModel)]="registro.ramo" mode="ios" name="ramo" required>
+      <ion-select-option value="" selected></ion-select-option>
+      <ion-select-option value="1">1</ion-select-option>
+      <ion-select-option value="2">2</ion-select-option>
+      <ion-select-option value="3">3</ion-select-option>
+      <ion-select-option value="4">4</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-item>
+   <ion-item>
     <ion-label>Sección</ion-label>
     <ion-select placeholder="0XXXX" [(ngModel)]="registro.seccion" mode="ios" name="seccion" required>
       <ion-select-option value="" selected></ion-select-option>
@@ -142,17 +141,44 @@
       <ion-select-option value="003V">003V</ion-select-option>
       <ion-select-option value="012V">012V</ion-select-option>
     </ion-select>
-  </ion-item>
-</form>
-  <br>
-  <ion-item >
-      <ion-button class="boton" color="amarilloduoc" (click)="crearQr()" mode="ios" [disabled]="formulario.invalid" >
-        Generar QR
-      </ion-button>
-      <ion-button class="boton2" color="amarilloduoc" (click)="borrarQr()" mode="ios" [disabled]="formulario.invalid">
-        Borrar QR
-      </ion-button> 
-  </ion-item>
- 
+  </ion-item> 
+</form> -->
 
+
+  <form novalidate #formulario="ngForm" mode="ios">
+    <ion-item>
+      <ion-label>ID de sala:</ion-label>
+      <ion-select [(ngModel)]="selectedId" (ionChange)="onIdChange()" name="selectedId" mode="ios">
+        <ion-select-option *ngFor="let sala of salas" [value]="sala.id" mode="ios">
+          {{ sala.id }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="selectedId" >
+      <ion-label>Día:</ion-label>
+      <ion-select [(ngModel)]="selectedHorario" (ionChange)="onHorarioChange()" name="selectedHorario" mode="ios">
+        <ion-select-option *ngFor="let horario of getHorariosForId(selectedId)" [value]="horario" mode="ios">
+          {{ horario }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="selectedHorario">
+      <ion-label>Horas:</ion-label>
+      <ion-select [(ngModel)]="selectedHora" name="selectedHora" mode="ios">
+        <ion-select-option *ngFor="let hora of getHorasForHorario(selectedHorario)" [value]="hora.hora" mode="ios">
+          {{ hora.hora }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+
+      <br>
+      <ion-item>
+        <ion-button class="boton" color="amarilloduoc" (click)="crearQr()"  [disabled]="formulario.invalid" mode="ios">
+          Generar QR
+        </ion-button>
+        <ion-button class="boton2" color="amarilloduoc" (click)="borrarQr()" [disabled]="formulario.invalid" mode="ios" >
+          Borrar QR
+        </ion-button>
+      </ion-item>
 </ion-content>

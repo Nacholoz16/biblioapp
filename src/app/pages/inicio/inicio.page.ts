@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController,AlertController, Platform } from  '@ionic/angular';
-import { RegistroService, Usuario } from '../../services/registro.service';
+import { ApiService } from '../../services/api.service';
 import { FormGroup,FormControl,FormBuilder,Validator, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+import { Usuario } from 'src/app/interfaces/usuario';
 
 @Component({
   selector: 'app-inicio',
@@ -13,18 +14,18 @@ import { LoadingController } from '@ionic/angular';
 export class InicioPage implements OnInit {
   
   formularioLogin: FormGroup;
-  usuarios : Usuario[] = [];
+  usuario : Usuario[] = [];
   subscribe:any;
   constructor(private navController: NavController,
               private alertController: AlertController,
-              private registroService: RegistroService,
+              private apiService: ApiService,
               private toastController: ToastController,
               private loadingController: LoadingController,
               private fb: FormBuilder,
               private plataform: Platform) { 
                 this.formularioLogin = this.fb.group({
                   'correo': new FormControl("",Validators.required),
-                  'password':new FormControl("",Validators.required),
+                  'pass':new FormControl("",Validators.required),
                 })
                 this.subscribe = this.plataform.backButton.subscribeWithPriority(666666, () => {
                   if (this.constructor.name == "HomePage") {
@@ -44,14 +45,14 @@ export class InicioPage implements OnInit {
     var f = this.formularioLogin.value;
     var a = 0;
     var nom = '';
-    this.registroService.getUser().then(datos=> {
-      this.usuarios=datos;
+    this.apiService.listarUsuarios().subscribe(datos=> {
+      this.usuario=datos;
       if (!datos || datos.length==0){
         this.alertMsg();
         return null;
       }
-      for (let obj of this.usuarios){
-        if (obj.correo == f.correo && obj.password == f.password){
+      for (let obj of this.usuario){
+        if (obj.correo == f.correo && obj.pass == f.pass){
           obj.nombre = obj.nombre.charAt(0).toUpperCase() + obj.nombre.slice(1);
           obj.apellidos = obj.apellidos.charAt(0).toUpperCase() + obj.apellidos.slice(1);
           nom = 'Bienvenido ' + obj.nombre + ' '+obj.apellidos; //mensaje de bienvenida

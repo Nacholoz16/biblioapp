@@ -1,17 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { IonContent, MenuController } from '@ionic/angular';
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'app-prueba-firebase',
   templateUrl: './prueba-firebase.page.html',
   styleUrls: ['./prueba-firebase.page.scss'],
 })
-export class PruebaFirebasePage implements OnInit {
+export class PruebaFirebasePage {
+  answers: { [key: number]: boolean } = {};
 
-  constructor(private menuController : MenuController) { }
-
-  ngOnInit() {
+  toggleAnswer(index: number) {
+    this.answers[index] = !this.answers[index];
   }
-
 }
-
-

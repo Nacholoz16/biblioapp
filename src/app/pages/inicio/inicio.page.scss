@@ -6,7 +6,6 @@
 	--ion-color-shade: var(--ion-color-duoc-shade);
 	--ion-color-tint: var(--ion-color-duoc-tint);
 }
-
 .ion-color-amarilloduoc {
 	--ion-color-base: var(--ion-color-amarilloduoc);
 	--ion-color-base-rgb: var(--ion-color-amarilloduoc-rgb);
@@ -15,6 +14,16 @@
 	--ion-color-shade: var(--ion-color-amarilloduoc-shade);
 	--ion-color-tint: var(--ion-color-amarilloduoc-tint);
 }
+
+.ion-color-negroduoc {
+	--ion-color-base: var(--ion-color-negroduoc);
+	--ion-color-base-rgb: var(--ion-color-negroduoc-rgb);
+	--ion-color-contrast: var(--ion-color-negroduoc-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-negroduoc-contrast-rgb);
+	--ion-color-shade: var(--ion-color-negroduoc-shade);
+	--ion-color-tint: var(--ion-color-negroduoc-tint);
+}
+
 
 .titulo{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, serif;

@@ -1,0 +1,13 @@
+{
+    "reservas": [
+      {
+        "id": 1,
+        "nombre": "Ignacio",
+        "apellidos": "Salazar Soto",
+        "correo": "ig.salazar@duocuc.cl",
+        "sala":"1",
+        "horarios":"lunes",
+        "hora":"9:00"
+      }
+    ]
+}
