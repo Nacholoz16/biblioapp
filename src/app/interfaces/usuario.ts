@@ -1,4 +1,5 @@
 export interface Usuario {
+  id:number,
   nombre: String,
   apellidos: String,
   correo: String,

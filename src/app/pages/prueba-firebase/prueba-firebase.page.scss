@@ -16,8 +16,42 @@
 }
 
 .titulo{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, serif;
-    letter-spacing: 1.5px;
-    font-size: 13px;
-
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+	font-weight: bold;
 }
+.parrafo{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-align: justify;
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+@keyframes slideIn {
+	0% {
+	  transform: translateX(-100%);
+	  opacity: 0;
+	}
+	100% {
+	  transform: translateX(0);
+	  opacity: 1;
+	}
+  }
+
+.animate-slide-in {
+	animation-name: slideIn;
+	animation-duration: 0.5s;
+	animation-delay: 0.2s;
+	animation-fill-mode: forwards;
+  }
+  .ion-item-group {
+	transition: transform 0.3s ease;
+  }
+  
+  .ion-item-group:active {
+	transform: scale(0.95);
+  }
+
+ 

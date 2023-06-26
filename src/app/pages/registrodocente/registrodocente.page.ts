@@ -15,6 +15,7 @@ export class RegistrodocentePage implements OnInit {
   formularioRegistro: FormGroup;
 
   newUsuario: Usuario = {
+    id:10,
     nombre: "matias",
     apellidos: "Salazar Soto",
     correo: "ma.salazar@duocuc.cl",
