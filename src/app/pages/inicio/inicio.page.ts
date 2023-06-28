@@ -58,6 +58,7 @@ export class InicioPage implements OnInit {
           nom = 'Bienvenido ' + obj.nombre + ' '+obj.apellidos; //mensaje de bienvenida
 
           a = 1;
+          console.log(obj);
           console.log('Usuario ingresado');
           localStorage.setItem('ingresado','true');
           this.navController.navigateRoot('home');          

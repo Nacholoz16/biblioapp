@@ -1,68 +1,22 @@
 {
   "usuario": [
     {
+      "nombre": "patricio",
+      "apellidos": "navarrete",
+      "correo": "pat.navarrete@duocuc.cl",
+      "pass": "1234",
+      "repass": "1234",
       "id": 1,
-      "nombre": "Ignacio",
-      "apellidos": "Salazar Soto",
-      "correo": "ig.salazar@duocuc.cl",
-      "pass": "1234",
-      "repass": "1234"
+      "bloqueado": null
     },
     {
-      "id": 2,
-      "nombre": "Manuel",
-      "apellidos": "Diaz Alvarez",
-      "correo": "man.diaza@duocuc.cl",
-      "pass": "1234",
-      "repass": "1234"
-    },
-    {
-      "nombre": "Matias",
-      "apellidos": "Salazar",
-      "correo": "ma.salazar@duocuc.cl",
+      "nombre": "belen",
+      "apellidos": "salazar",
+      "correo": "bel.salazar@duocuc.cl",
       "pass": "1234",
       "repass": "1234",
-      "id": 3
-    },
-    {
-      "nombre": "raul",
-      "apellidos": "perez",
-      "correo": "raul@duocuc.cl",
-      "pass": "1234",
-      "repass": "1234",
-      "id": 4
-    },
-    {
-      "nombre": "Maximiliano",
-      "apellidos": "Blamey",
-      "correo": "Maxi@duocuc.cl",
-      "pass": "1234",
-      "repass": "1234",
-      "id": 5
-    },
-    {
-      "nombre": "Brian",
-      "apellidos": "Urbina",
-      "correo": "brian.urbina@profesor.duoc.cl",
-      "pass": "1234",
-      "repass": "1234",
-      "id": 6
-    },
-    {
-      "nombre": "juanito",
-      "apellidos": "arcoiris",
-      "correo": "j.arcoirid@profesor.duoc.cl",
-      "pass": "hola1234",
-      "repass": "hola1234",
-      "id": 7
-    },
-    {
-      "nombre": "cachupin",
-      "apellidos": "duoc",
-      "correo": "cachupin@duocuc.cl",
-      "pass": "duoc1234",
-      "repass": "duoc1234",
-      "id": 8
+      "bloqueado": "on",
+      "id": 2
     }
   ]
 }

@@ -22,8 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'qrgenerado',
-    loadChildren: () => import('./pages/qrgenerado/qrgenerado.module').then(m => m.QrgeneradoPageModule),
-    canActivate: [IngresadoGuard]
+    loadChildren: () => import('./pages/qrgenerado/qrgenerado.module').then(m => m.QrgeneradoPageModule)
   },
   {
     path: 'registrodocente',

@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 export interface Usuario{
-  nombre:string;
-  apellidos:string;
-  correo: string;
-  password:string;
-  confirmPass: string;
+  nombre: String,
+  apellidos: String,
+  correo: String,
+  pass: String,
+  repass: String
+  bloqueado:string
 }
+
 
 const USERS_KEY = 'my-usuarios';
 
@@ -40,6 +42,7 @@ export class RegistroService {
       }
     })
   }//fin addDatos()
+
   async getUser(): Promise<Usuario[]>{
     return this.storage.get(USERS_KEY);
   }
@@ -56,3 +59,5 @@ export class RegistroService {
     this.storage.remove(this.usuarioStorageKey);
   }
 }
+
+

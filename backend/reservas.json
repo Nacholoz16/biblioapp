@@ -1,13 +1,67 @@
 {
-    "reservas": [
-      {
-        "id": 1,
-        "nombre": "Ignacio",
-        "apellidos": "Salazar Soto",
-        "correo": "ig.salazar@duocuc.cl",
-        "sala":"1",
-        "horarios":"lunes",
-        "hora":"9:00"
-      }
-    ]
+  "reservas": [
+    {
+      "id": 1,
+      "nombre": "Ignacio",
+      "apellidos": "Salazar Soto",
+      "correo": "ig.salazar@duocuc.cl",
+      "sala": "1",
+      "horarios": "lunes",
+      "hora": "9:00"
+    },
+    {
+      "id": 2,
+      "nombre": "hola",
+      "apellidos": "hola",
+      "correo": "hola@mail.com",
+      "sala": 4,
+      "horarios": "miercoles",
+      "hora": "11:00"
+    },
+    {
+      "id": 3,
+      "nombre": "Ignacio",
+      "apellidos": "Salazar Soto",
+      "correo": "ig.salazar@duocuc.cl",
+      "sala": 4,
+      "horarios": "miercoles",
+      "hora": "12:00"
+    },
+    {
+      "id": 4,
+      "nombre": "patricio",
+      "apellidos": "navarrete",
+      "correo": "pat.navarrete@duocuc.cl",
+      "sala": 1,
+      "horarios": "viernes",
+      "hora": "13:00"
+    },
+    {
+      "id": 5,
+      "nombre": "Ignacio",
+      "apellidos": "Salazar",
+      "correo": "ig.salazar@duocuc.cl",
+      "sala": 1,
+      "horarios": "lunes",
+      "hora": "9:00"
+    },
+    {
+      "id": 6,
+      "nombre": "karen",
+      "apellidos": "poblete",
+      "correo": "kare.poblete@duocuc.cl",
+      "sala": 1,
+      "horarios": "viernes",
+      "hora": "12:00"
+    },
+    {
+      "id": 7,
+      "nombre": "belen",
+      "apellidos": "salazar",
+      "correo": "bel.salazar@duocuc.cl",
+      "sala": 4,
+      "horarios": "jueves",
+      "hora": "11:00"
+    }
+  ]
 }

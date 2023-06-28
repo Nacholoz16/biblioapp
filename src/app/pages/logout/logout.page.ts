@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 
+import { RegistroService } from 'src/app/services/registro.service';
+
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.page.html',
@@ -11,10 +13,12 @@ export class LogoutPage implements OnInit {
   
 
   constructor(private navController : NavController,
-              private loadingController : LoadingController) { }
+              private loadingController : LoadingController,
+              private registro:RegistroService ) { }
 
   ngOnInit() {
     console.log('no ingresado');
+    //this.registro.eliminarUsuario()
     localStorage.removeItem('ingresado');
     this.navController.navigateRoot('inicio');
     this.presentLoadingText();

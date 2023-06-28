@@ -16,7 +16,7 @@ export class AppComponent{
 
   componentes : Componente[] = [
     {
-      icon:'home-outline',
+      icon:'home',
       name: 'Inicio',
       redirecTo:'/home'
     },
@@ -25,28 +25,34 @@ export class AppComponent{
       name: 'Generar QR',
       redirecTo:'/alert'
     },
+    
     {
-      icon:'calendar-outline',
+      icon:'book',
+      name: 'Mi reserva',
+      redirecTo:'/qrgenerado'
+    },
+    {
+      icon:'calendar',
       name: 'Feriados',
       redirecTo:'/api'
     },
     {
-      icon:'bug-outline',
+      icon:'help-circle',
       name: 'Mesa ayuda FAQ',
       redirecTo:'/prueba-firebase'
      },
     {
-      icon:'information-circle-outline',
+      icon:'information-circle',
       name: 'Acerca de',
       redirecTo:'/informacion'
     },
     
     {
-      icon:'exit-outline',
+      icon:'exit',
       name: 'Cerrar Sesión',
       redirecTo:'/logout'
     }
- 
+    
 
   ];
 

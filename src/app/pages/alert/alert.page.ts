@@ -3,7 +3,8 @@ import { AlertController,MenuController,NavController,ToastController } from '@i
 import { QRCodeModule } from 'angularx-qrcode/public-api';
 import { ApiService } from 'src/app/services/api.service';
 import { Usuario } from 'src/app/interfaces/usuario';
-
+import { Reservada } from 'src/app/interfaces/reservas';
+import { RegistroService } from 'src/app/services/registro.service';
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.page.html',
@@ -18,26 +19,30 @@ export class AlertPage implements OnInit {
   constructor(private alertController: AlertController,
     private menuController: MenuController,
     private navCtrl: NavController,
-    private toastController: ToastController, private apiService:ApiService) { }
+    private toastController: ToastController, 
+    private apiService:ApiService, private registro:RegistroService) { }
 
   ngOnInit() {
-    this.apiService.listarSalas().subscribe((salas) => {
+    this.apiService.mostrarSalas().subscribe((salas) => {
       this.salas = salas;
     }); 
   }
   mostrarMenu() {
     this.menuController.open('first');
   }
+  
+  newReserva: Reservada = {
+    id:0,
+    nombre:"",
+    apellidos:"",
+    correo:"",
+    sala: 0,
+    horarios:"",
+    hora:"",
+    }
+    block = "on"
   salas = []
-  registro={
-    dia:'',
-    mes:'',
-    ano:'2023',
-    hora:'',
-    min:'',
-    seccion:'',
-    ramo:''
-  }
+
 
   selectedId: number;
   selectedHorario: string;
@@ -47,7 +52,7 @@ export class AlertPage implements OnInit {
 
 
   onIdChange() {
-    this.apiService.listarSalas().subscribe((salas) => {
+    this.apiService.mostrarSalas().subscribe((salas) => {
       this.salas = salas;
     });  
     this.selectedHorario = null;
@@ -81,7 +86,9 @@ export class AlertPage implements OnInit {
 
 
   async crearQr() {    //alerta generar codigo
+    const datosUsuario = await this.registro.obtenerUsuario();
 
+    console.log("usuario: ",datosUsuario)
     let date: Date = new Date();
     const alert = await this.alertController.create({
 
@@ -98,10 +105,22 @@ export class AlertPage implements OnInit {
           role: 'confirm',
           handler: data => {
             //this.qrCodeString=this.registro.dia + '/' + this.registro.mes + '/' + this.registro.ano + ' Hora: ' + this.registro.hora + ':' + this.registro.min + " sección: " + this.registro.seccion + " ramo: " + this.registro.ramo;
+            console.log("estado: ",datosUsuario.bloqueado)
+            if(datosUsuario.bloqueado == "on"){ 
+              this.mostrarAlerta();
+            }else{
             this.reservada = true;
             this.qrCodeString=this.selectedId + '/' + this.selectedHora + '/' + this.selectedHorario ;
-            this.apiService.actualizarReserva(this.selectedId,this.selectedHora,this.selectedHorario,this.reservada).subscribe();
-          },
+            this.newReserva.sala = this.selectedId,
+            this.newReserva.nombre = datosUsuario.nombre,
+            this.newReserva.apellidos = datosUsuario.apellidos,
+            this.newReserva.correo = datosUsuario.correo,
+            this.newReserva.hora = this.selectedHora,
+            this.newReserva.horarios = this.selectedHorario,
+            this.apiService.actualizarReserva(this.newReserva).subscribe();
+            this.apiService.cambiarEstadoReservada(this.selectedHorario,this.selectedHora,this.reservada).subscribe(()=>{console.log("Estado de reservada cambiado");},(error)=>{console.log("Error al cambiar el estado reservada")})
+            //this.apiService.actualizarReserva(this.selectedId,this.selectedHora,this.selectedHorario,this.reservada).subscribe();
+         } },
         },
 
       ],
@@ -124,6 +143,22 @@ async showToast() {
   toast.present();
 }
 
+async mostrarAlerta() {
+  const alert = await this.alertController.create({
+    header: 'Alerta',
+    message: 'Usted está bloqueado, avise a un administrador',
+    buttons: [
+      {
+        text: 'Aceptar',
+        handler: () => {
+          this.navCtrl.navigateRoot(['/home']); // Navegar al home
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
 
   }
 

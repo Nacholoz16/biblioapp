@@ -4,6 +4,7 @@ import { NavController, AlertController, ToastController } from '@ionic/angular'
 import { FormGroup, FormControl, FormBuilder, Validator, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ApiService } from 'src/app/services/api.service';
+import { RegistroService } from 'src/app/services/registro.service'; 
 
 @Component({
   selector: 'app-registrodocente',
@@ -15,19 +16,19 @@ export class RegistrodocentePage implements OnInit {
   formularioRegistro: FormGroup;
 
   newUsuario: Usuario = {
-    id:10,
     nombre: "matias",
     apellidos: "Salazar Soto",
     correo: "ma.salazar@duocuc.cl",
     pass: "1234",
-    repass: "1234"
+    repass: "1234",
+    bloqueado:null
   }
 
   usuario: Usuario[] = [];
 
+  user: Usuario = <Usuario>{};
 
-
-  constructor(private navController: NavController, private apiService: ApiService, private alertController: AlertController, private toastController: ToastController, private fb: FormBuilder) {
+  constructor(private registro: RegistroService,private navController: NavController, private apiService: ApiService, private alertController: AlertController, private toastController: ToastController, private fb: FormBuilder) {
     this.formularioRegistro = this.fb.group({
       'nombre': new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(/^[a-zA-z ]+$/)]),
       'apellidos': new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(/^[a-zA-z ]+$/)]),
@@ -51,7 +52,6 @@ export class RegistrodocentePage implements OnInit {
 
     var form = this.formularioRegistro.value;
     var existe = 0;
-
     if (this.formularioRegistro.invalid) {
       this.alertError();
       console.log('error')
@@ -69,6 +69,7 @@ export class RegistrodocentePage implements OnInit {
           this.newUsuario.correo = form.correo;
           this.newUsuario.pass = form.pass;
           this.newUsuario.repass = form.repass;
+          this.newUsuario.bloqueado = null;
 
           this.apiService.listarUsuarios().subscribe(datos => {
             this.usuario = datos;
@@ -95,6 +96,7 @@ export class RegistrodocentePage implements OnInit {
 
               } else {
                 this.apiService.postUsuario(this.newUsuario).subscribe();
+                this.registro.guardarUsuario(this.newUsuario)
                 this.showToast('Usuario Creado!');
                 console.log(this.newUsuario.correo);
               }

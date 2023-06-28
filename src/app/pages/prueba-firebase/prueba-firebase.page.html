@@ -11,84 +11,94 @@
 <ion-content>
   <ion-list>
     <div class="ion-item-group">
-    <ion-item-group class="animate-slide-in">
-      <ion-card>
-        <ion-item (click)="toggleAnswer(1)">
-          <ion-label class="titulo">¿Cómo puedo reservar una sala?</ion-label>
-        </ion-item>
-        <ion-item *ngIf="answers[1]" class="faq-answer parrafo">
-          Puedes reservar una sala utilizando nuestra aplicación. Abre la aplicación, inicia sesión con tu cuenta y selecciona la opción de reservas. Luego, elige la sala que deseas reservar, selecciona la fecha y hora, y confirma la reserva.
-        </ion-item> 
-      </ion-card>
-    </ion-item-group>
-  </div>
-  <div class="ion-item-group">
-    <ion-item-group class="animate-slide-in">
-      <ion-card>
-        
-     
-        <ion-item (click)="toggleAnswer(2)" >
-          <ion-label class="titulo">¿Cuánto tiempo puedo reservar una sala?</ion-label>
-        </ion-item>
-        <ion-item *ngIf="answers[2]" class="faq-answer parrafo" >
-          Puedes reservar una sala por un máximo de 1 hora. Si necesitas más tiempo, puedes hacer otra reserva consecutiva siempre y cuando esté disponible.
-        </ion-item>
-      </ion-card>
-    </ion-item-group>
-</div>
-    <!-- <ion-item-group>
-      <ion-item-divider>
-       
-      </ion-item-divider>
-      <ion-item (click)="toggleAnswer(3)">
-        <ion-label>¿Puedo cancelar una reserva de sala?</ion-label>
-      </ion-item>
-      <ion-item *ngIf="answers[3]" class="faq-answer">
-        Sí, puedes cancelar una reserva de sala en cualquier momento antes de la hora de inicio programada. Abre la aplicación, ve a la sección de reservas y busca la reserva que deseas cancelar. Luego, selecciona la opción de cancelar y sigue las instrucciones.
-      </ion-item>
-    </ion-item-group>-->
-    <div class="ion-item-group">
-    <ion-item-group class="animate-slide-in"> 
-      <ion-card>
-        
-      
-      <ion-item (click)="toggleAnswer(4)">
-        <ion-label class="titulo">¿Puedo reservar una sala para otra persona?</ion-label>
-      </ion-item>
-      <ion-item *ngIf="answers[4]" class="faq-answer parrafo">
-        No, las reservas de sala solo se pueden hacer para tu propia cuenta. Cada usuario debe hacer su propia reserva utilizando su cuenta de la aplicación.
-      </ion-item>
-    </ion-card>
-    </ion-item-group>
+      <ion-item-group class="animate-slide-in">
+        <ion-card>
+          <ion-item (click)="toggleAnswer(1)">
+            <ion-label class="titulo">¿Cómo puedo reservar una sala?</ion-label>
+          </ion-item>
+          <ion-item *ngIf="answers[1]" class="faq-answer parrafo">
+            Puedes reservar una sala utilizando nuestra aplicación. Abre la aplicación, inicia sesión con tu cuenta y
+            selecciona la opción de reservas. Luego, elige la sala que deseas reservar, selecciona la fecha y hora, y
+            confirma la reserva.
+          </ion-item>
+        </ion-card>
+      </ion-item-group>
     </div>
     <div class="ion-item-group">
-    <ion-item-group class="animate-slide-in">
-      <ion-card>
-        
-      
-      <ion-item (click)="toggleAnswer(5)">
-        <ion-label class="titulo">¿Puedo modificar una reserva existente?</ion-label>
-      </ion-item>
-      <ion-item *ngIf="answers[5]" class="faq-answer parrafo">
-        Actualmente, no es posible modificar una reserva existente. Si necesitas realizar cambios, te recomendamos cancelar la reserva existente y hacer una nueva reserva con los detalles actualizados.
-      </ion-item>
-    </ion-card>
-    </ion-item-group>
-  </div>
-  <div class="ion-item-group">
-    <ion-item-group class="animate-slide-in">
-      <ion-card>
-        
-      
-      <ion-item (click)="toggleAnswer(6)">
-        <ion-label class="titulo">Tengo problemas con mi cuenta </ion-label>
-      </ion-item>
-      <ion-item *ngIf="answers[6]" class="faq-answer parrafo">
-        Sí tienes problemas con tu cuenta puedes comunicarte con la administradora/bibliotecaria o dirigirte a CETECOM.
-      </ion-item>
-    </ion-card>
-    </ion-item-group>
-  </div>
+      <ion-item-group class="animate-slide-in">
+        <ion-card>
+
+
+          <ion-item (click)="toggleAnswer(2)">
+            <ion-label class="titulo">¿Cuánto tiempo puedo reservar una sala?</ion-label>
+          </ion-item>
+          <ion-item *ngIf="answers[2]" class="faq-answer parrafo">
+            Puedes reservar una sala por un máximo de 1 hora. Si necesitas más tiempo, puedes hacer otra reserva
+            consecutiva siempre y cuando esté disponible.
+          </ion-item>
+        </ion-card>
+      </ion-item-group>
+    </div>
+
+    <div class="ion-item-group">
+      <ion-item-group class="animate-slide-in">
+        <ion-card>
+        <ion-item (click)="toggleAnswer(3)">
+          <ion-label class="titulo">¿Puedo cancelar una reserva de sala?</ion-label>
+        </ion-item>
+        <ion-item *ngIf="answers[3]" class="faq-answer parrafo">
+          Sí, puedes cancelar una reserva de sala en cualquier momento antes de la hora de inicio programada. Abre la
+          aplicación, ve a la sección de reservas y busca la reserva que deseas cancelar. Luego, selecciona la opción de
+          cancelar y sigue las instrucciones.
+        </ion-item>
+      </ion-card>
+      </ion-item-group>
+    </div>
+    <div class="ion-item-group">
+      <ion-item-group class="animate-slide-in">
+        <ion-card>
+
+
+          <ion-item (click)="toggleAnswer(4)">
+            <ion-label class="titulo">¿Puedo reservar una sala para otra persona?</ion-label>
+          </ion-item>
+          <ion-item *ngIf="answers[4]" class="faq-answer parrafo">
+            No, las reservas de sala solo se pueden hacer para tu propia cuenta. Cada usuario debe hacer su propia
+            reserva utilizando su cuenta de la aplicación.
+          </ion-item>
+        </ion-card>
+      </ion-item-group>
+    </div>
+    <div class="ion-item-group">
+      <ion-item-group class="animate-slide-in">
+        <ion-card>
+
+
+          <ion-item (click)="toggleAnswer(5)">
+            <ion-label class="titulo">¿Puedo modificar una reserva existente?</ion-label>
+          </ion-item>
+          <ion-item *ngIf="answers[5]" class="faq-answer parrafo">
+            Actualmente, no es posible modificar una reserva existente. Si necesitas realizar cambios, te recomendamos
+            cancelar la reserva existente y hacer una nueva reserva con los detalles actualizados.
+          </ion-item>
+        </ion-card>
+      </ion-item-group>
+    </div>
+    <div class="ion-item-group">
+      <ion-item-group class="animate-slide-in">
+        <ion-card>
+
+
+          <ion-item (click)="toggleAnswer(6)">
+            <ion-label class="titulo">Tengo problemas con mi cuenta </ion-label>
+          </ion-item>
+          <ion-item *ngIf="answers[6]" class="faq-answer parrafo">
+            Sí tienes problemas con tu cuenta puedes comunicarte con la administradora/bibliotecaria o dirigirte a
+            CETECOM.
+          </ion-item>
+        </ion-card>
+      </ion-item-group>
+    </div>
 
   </ion-list>
 </ion-content>

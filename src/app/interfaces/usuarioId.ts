@@ -5,5 +5,5 @@ export interface UsuarioId {
     pass: String,
     repass: String,
     id:number
-
+    bloqueado:string
   }
