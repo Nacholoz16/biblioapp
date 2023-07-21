@@ -10,14 +10,17 @@
 
 <ion-content class="fondo">
 
-  <ion-card class="marginTopregistro " color="amarilloduoc">
+  <ion-card class="marginTopregistro " color="duoc">
 
-    <ion-card-title class="ion-padding tituloCard">Registro</ion-card-title>
-
+    
+      <ion-card-header>
+        <ion-card-title class="tituloCard">Registro</ion-card-title>
+        <ion-card-subtitle>Aquí puedes registrarte para disfrutar la App!</ion-card-subtitle>
+      </ion-card-header>
 
 
       <form [formGroup]="formularioRegistro" (keyup.enter)="CrearUsuario()">
-
+        
         <ion-item>
           <ion-label position="floating">Nombre: </ion-label>
           <ion-input type="text" formControlName="nombre" color="duoc" >
@@ -43,7 +46,8 @@
           <ion-input type="password" formControlName="repass" color="duoc">
           </ion-input>
         </ion-item>
-        <ion-button (click)="CrearUsuario()" color="duoc" expand="block" fill="outline">
+      
+        <ion-button (click)="CrearUsuario()" color="amarilloduoc" expand="block" >
           Registrarse
         </ion-button>
       </form>

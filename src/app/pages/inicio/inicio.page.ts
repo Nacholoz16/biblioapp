@@ -83,6 +83,7 @@ export class InicioPage implements OnInit {
 
   async showToast(msg){ //mensaje bottom bienvenido
     const toast = await this.toastController.create({
+      icon:'heart-outline',
       message: msg,
       duration: 2000
     })

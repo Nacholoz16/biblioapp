@@ -165,8 +165,10 @@ export class RegistrodocentePage implements OnInit {
 
   async showToast(msg) {
     const toast = await this.toastController.create({
+      
       message: msg,
-      duration: 2000
+      duration: 2000,
+      position: 'bottom'
     })
     await toast.present();
   }

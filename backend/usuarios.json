@@ -17,6 +17,33 @@
       "repass": "1234",
       "bloqueado": "on",
       "id": 2
+    },
+    {
+      "nombre": "cachupin",
+      "apellidos": "cahupin",
+      "correo": "cachu.pin@duocuc.cl",
+      "pass": "1234",
+      "repass": "1234",
+      "bloqueado": null,
+      "id": 4
+    },
+    {
+      "nombre": "felipe",
+      "apellidos": "vargas",
+      "correo": "fel.vargas@duocuc.cl",
+      "pass": "1234",
+      "repass": "1234",
+      "bloqueado": null,
+      "id": 5
+    },
+    {
+      "nombre": "Belen",
+      "apellidos": "Dominguez",
+      "correo": "bel.dominguez@duocuc.cl",
+      "pass": "1234",
+      "repass": "1234",
+      "bloqueado": null,
+      "id": 6
     }
   ]
 }

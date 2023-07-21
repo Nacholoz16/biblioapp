@@ -44,3 +44,21 @@ ion-checkbox::part(container) {
     --background: url(/assets/background_duoc.jpg) 0 0/130% 100%;
 	
 }
+
+.tituloCard{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	text-align: justify;
+	font-size: 25px;
+}
+
+
+.toast-position {
+	top: 100px; /* Posición vertical en píxeles */
+	left: 50%; /* Posición horizontal en píxeles */
+	transform: translateX(-50%); /* Centrar horizontalmente el toast */
+  }
+  
+  .custom-toast {
+	/* Estilos personalizados para el toast */
+  }
+  
